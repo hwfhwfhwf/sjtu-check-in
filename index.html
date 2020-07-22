@@ -1,118 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-  
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
-    <link rel="icon" href="img/Icon58.png">
-    <title>学生进出校管理系统</title>
-    <link href="css/app.87d98219.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Sjtu-check-in by hwfhwfhwf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-  
   <body>
-    <div id="app">
-      <div style="height: 3.2rem; width: 100%; background-color: #00409a; padding: 1rem;">
-          <img src="img/leftarrow.png" style="height: 1.2rem;float: left;" onclick="setInfo()">
-          <div style="float:left;color: white;font-size: 1rem;font-weight: 600;margin-left: 10%">学生进出校通行证</div>
-          <img src="img/dot.png" style="height: 1.2rem;float: right;" onclick="setInfo()">
-      </div>
-      <div class="wrapper">
-        
-        <div style="position: relative;">
-          <img src="img/xyk.56d8a335.png" style="width: 100%; height: 100%;">
-          <div class="dept" id="dept">电子信息与电气工程学院</div></div>
-        <div class="content">
-          <div class="user">
-            <img src="img/me.jpg">
-            <div class="user-info">
-              <div id="user-name"></div>
-              <div class="user-no" id="user-no"></div></div>
-          </div>
-          <div class="audit">
-            <!---->
-            <div id="date"></div>
-            <div id="campus"></div>
-            <!---->
-            <div class="audit-status success">审核通过</div></div>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; padding-top: 1.5rem;">
-          <div class="circle-btn" onclick="changeBtnStatus()">
-            <div class="crust success-bk-air">
-              <div class="mantle success-bk-gradient">
-                <div class="spacing">
-                  <div class="core success-bk">
-                    <div style="font-weight: 300;" id="circle-status">出校</div>
-                    <div>PASSED</div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <span  id="msg" style="color: #bebcba; border: 1px solid #bebcba;padding: .2rem .8rem;border-radius: 1rem;box-shadow: -1px 0 2px #bebcba, 1px 0 5px #bebcba, 0 -1px 5px #bebcba, 0 1px 5px #bebcba">此状态保持10分钟，请尽快出校</span>
-          <div class="time" id="time"></div></div>
-      </div>
-    </div>
-    <script type="text/javascript">
-        function padLeft(number) {
-            var str = number.toString();
-            if (str.length == 1) {
-                return ("0" + str);
-            } else {
-                return str;
-            }
-        }
-        if (!localStorage.getItem("username") || !localStorage.getItem("userno") || localStorage.getItem("username") == "" || localStorage.getItem("userno") == "") {
-            alert("请先提供你的姓名和学号");
-            setInfo();
-            alert("提示：如果要更改信息可以点击顶部的箭头或者点点");
-        }
-        // 设置用户名
-        var username = document.getElementById("user-name");
-        username.innerHTML = localStorage.getItem("username");
-        // 设置学号
-        var userno = document.getElementById("user-no");
-        userno.innerHTML = localStorage.getItem("userno");
-        // 设置进出校时间
-        var date = new Date();
-        var today = document.getElementById("date");
-        today.innerHTML = date.getMonth() + 1 + "月" + date.getDate() + "号";
-        // 设置校区
-        var campus = document.getElementById("campus");
-        campus.innerHTML = "闵行校区";
+    <section class="page-header">
+      <h1 class="project-name">Sjtu-check-in</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/hwfhwfhwf/sjtu-check-in" class="btn">View on GitHub</a>
+      <a href="https://github.com/hwfhwfhwf/sjtu-check-in/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/hwfhwfhwf/sjtu-check-in/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        setInterval(function() {
-            date = new Date();
-            var hour = padLeft(date.getHours());
-            var minute = padLeft(date.getMinutes());
-            var seconds = padLeft(date.getSeconds());
-            var time = document.getElementById('time');
-            time.innerHTML = hour + ":" + minute + ":" + seconds;
-        },
-        1000);
+    <section class="main-content">
+      
 
-        function changeBtnStatus() {
-            var status = document.getElementById('circle-status');
-            var msg = document.getElementById('msg');
-            if (status.innerHTML == "进校") {
-                status.innerHTML = "出校";
-                msg.innerHTML = "此状态保持10分钟，请尽快出校";
-            } else {
-                status.innerHTML = "进校";
-                msg.innerHTML = "此状态保持30分钟，请尽快进校";
-            }
-        }
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/hwfhwfhwf/sjtu-check-in">Sjtu-check-in</a> is maintained by <a href="https://github.com/hwfhwfhwf">hwfhwfhwf</a>.</span>
 
-        // function setInfo() {
-        //     localStorage.setItem("username", prompt("请输入你的名字"));
-        //     localStorage.setItem("userno", prompt("请输入你的学号"));
-        //     window.location.reload();
-        // }
-        function setInfo() {
-            localStorage.setItem("username", "冯世祥");
-            localStorage.setItem("userno", "119034910104");
-            window.location.reload();
-        }
-    </script>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
   </body>
-
 </html>
